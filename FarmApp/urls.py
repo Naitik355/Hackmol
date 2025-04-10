@@ -9,4 +9,6 @@ urlpatterns = [
     path('logout/', views.logout_view,name='logout'),
     path('dashboard/', views.dashboard_view,name='dashboard'),
     path('profile/', views.profile_view,name='profile'),
+    path('predict/', views.crop_prediction_view,name='predict'),
+    path('/crop_prediction', views.crop_prediction_view,name='predict'),
 ]

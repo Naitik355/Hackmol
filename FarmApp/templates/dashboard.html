@@ -115,7 +115,7 @@ ul {
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
           <div class="flex items-center">
-          <h1 class="font-['Pacifico'] text-primary text-3xl mr-8">Agrova</h1>
+          <h1 class="font-['Pacifico'] text-primary text-3xl mr-8">Agronova</h1>
           <nav class="hidden md:flex space-x-8">
             <a href="{% url 'home' %}" class="text-gray-700 hover:text-primary font-medium">Home</a>
             <a href="{%url 'dashboard' %}" class="text-gray-700 hover:text-primary font-medium">Dashboard</a>
@@ -162,18 +162,22 @@ ul {
             </div>
 
             <!-- Soil -->
-            <div class="card animate fade-in">
-                <h2>🧪 Soil Data</h2>
-                <p>Moisture: {{ soil.moisture }}%</p>
-                <p>pH: {{ soil.ph }}</p>
-                <p>Nutrients: {{ soil.nutrients }}</p>
-            </div>
-
+            
             <!-- Crops -->
             <div class="card animate fade-in">
-                <h2>🌱 Crops</h2>
-                <p>Active Crops: {{ crops.active }}</p>
-                <p>Yield: {{ crops.yield }} kg</p>
+                <h2>Crop To Grow</h2>
+                <form method="POST" action="{% url 'predict' %}">
+                  {% csrf_token %}
+                  <input type="text" name="N" placeholder="Nitrogen" required>
+                  <input type="text" name="P" placeholder="Phosphorus" required>
+                  <input type="text" name="K" placeholder="Potassium" required>
+                  <input type="text" name="temperature" placeholder="Temperature" required>
+                  <input type="text" name="humidity" placeholder="Humidity" required>
+                  <input type="text" name="ph" placeholder="pH" required>
+                  <input type="text" name="rainfall" placeholder="Rainfall" required>
+                  <button type="submit">Predict Crop</button>
+              </form>
+              
             </div>
 
             <!-- Tasks -->
@@ -197,6 +201,11 @@ ul {
             </div>
         </div>
     </div>
+    {% if crop_name %}
+<script>
+    alert("Recommended crop to grow is: {{ crop_name }}");
+</script>
+{% endif %}
     <footer class="bg-gray-900 text-white py-12">
         <div class="container mx-auto px-4">
           <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
