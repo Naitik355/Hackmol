@@ -38,7 +38,14 @@ body {
       </div>
       <div class="flex items-center space-x-4">
         {% if user.is_authenticated %}
-          <span class="text-gray-700 font-medium">Hello, {{ user.username }}</span>
+          <div class="flex items-center space-x-2">
+            <a href="{% url 'profile' %}" class="flex items-center space-x-2 text-gray-700 hover:text-primary transition-colors duration-300">
+              <div class="w-8 h-8 flex items-center justify-center bg-primary bg-opacity-10 rounded-full">
+                <i class="ri-user-line text-primary"></i>
+              </div>
+              <span class="font-medium">Hello, {{ user.username }}</span>
+            </a>
+          </div>
           <a href="{% url 'logout' %}" class="text-gray-700 hover:text-primary font-medium">Logout</a>
         {% else %}
           <a href="{% url 'login' %}" class="text-gray-700 hover:text-primary font-medium">Login</a>

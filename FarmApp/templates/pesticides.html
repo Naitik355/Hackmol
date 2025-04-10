@@ -253,7 +253,6 @@ box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
 <a href="{% url 'home' %}" class="text-gray-800 hover:text-primary transition-colors duration-300 font-medium animate-fade-in animate-delay-1">Home</a>
 <a href="#" class="text-primary border-b-2 border-primary font-medium animate-fade-in animate-delay-2">About Pesticides</a>
 <a href="#" class="text-gray-800 hover:text-primary transition-colors duration-300 font-medium animate-fade-in animate-delay-3">Products</a>
-<a href="#" class="text-gray-800 hover:text-primary transition-colors duration-300 font-medium animate-fade-in animate-delay-4">Services</a>
 <a href="#" class="text-gray-800 hover:text-primary transition-colors duration-300 font-medium animate-fade-in animate-delay-4">Contact</a>
 </nav>
 <div class="md:hidden w-8 h-8 flex items-center justify-center">
@@ -261,7 +260,14 @@ box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
 </div>
 <div class="flex items-center space-x-4">
     {% if user.is_authenticated %}
-      <span class="text-gray-700 font-medium">Hello, {{ user.username }}</span>
+      <div class="flex items-center space-x-2">
+        <a href="{% url 'profile' %}" class="flex items-center space-x-2 text-gray-700 hover:text-primary transition-colors duration-300">
+          <div class="w-8 h-8 flex items-center justify-center bg-primary bg-opacity-10 rounded-full">
+            <i class="ri-user-line text-primary"></i>
+          </div>
+          <span class="font-medium">Hello, {{ user.username }}</span>
+        </a>
+      </div>
       <a href="{% url 'logout' %}" class="text-gray-700 hover:text-primary font-medium">Logout</a>
     {% else %}
       <a href="{% url 'login' %}" class="text-gray-700 hover:text-primary font-medium">Login</a>

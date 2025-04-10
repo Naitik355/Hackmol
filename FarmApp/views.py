@@ -18,6 +18,8 @@ def pesticides_view(request):
 def about_view(request):
     return render(request, 'about.html')
 
+def profile_view(request):
+    return render(request, 'profile.html')
 
 def signup_view(request):
     if request.method == 'POST':
