@@ -28,17 +28,22 @@ body {
   <header class="bg-white shadow-sm sticky top-0 z-50">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
       <div class="flex items-center">
-        <h1 class="font-['Pacifico'] text-primary text-3xl mr-8">logo</h1>
-        <nav class="hidden md:flex space-x-8">
-          <a href="#features" class="text-gray-700 hover:text-primary font-medium">Features</a>
-          <a href="#dashboard" class="text-gray-700 hover:text-primary font-medium">Dashboard</a>
-          <a href="#analytics" class="text-gray-700 hover:text-primary font-medium">Analytics</a>
-          <a href="#testimonials" class="text-gray-700 hover:text-primary font-medium">Testimonials</a>
-        </nav>
+      <h1 class="font-['Pacifico'] text-primary text-3xl mr-8">logo</h1>
+      <nav class="hidden md:flex space-x-8">
+        <a href="#features" class="text-gray-700 hover:text-primary font-medium">Features</a>
+        <a href="{%url 'dashboard' %}" class="text-gray-700 hover:text-primary font-medium">Dashboard</a>
+        <a href="#analytics" class="text-gray-700 hover:text-primary font-medium">Analytics</a>
+        <a href="#testimonials" class="text-gray-700 hover:text-primary font-medium">Testimonials</a>
+      </nav>
       </div>
       <div class="flex items-center space-x-4">
+      {% if user.is_authenticated %}
+        <span class="text-gray-700 font-medium">Hello, {{ user.username }}</span>
+        <a href="{% url 'logout' %}" class="text-gray-700 hover:text-primary font-medium">Logout</a>
+      {% else %}
         <a href="{% url 'login' %}" class="text-gray-700 hover:text-primary font-medium">Login</a>
         <a href="{% url 'signup' %}" class="bg-primary hover:bg-primary/90 text-white py-2 px-6 !rounded-button font-medium whitespace-nowrap transition duration-200">Get Started</a>
+      {% endif %}
       </div>
     </div>
   </header>

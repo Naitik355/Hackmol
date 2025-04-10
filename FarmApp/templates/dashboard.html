@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Farm Dashboard</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#2563EB',secondary:'#4ade80'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+</head>
+<style>
+ body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4fff4;
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard-container {
+    padding: 40px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #2d572c;
+    margin-bottom: 20px;
+    animation: fadeInDown 1s ease-in-out;
+}
+
+.dashboard-actions {
+    margin-bottom: 20px;
+}
+
+.btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-right: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #388e3c;
+    transform: scale(1.05);
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 18px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h2 {
+    color: #3b7737;
+    margin-bottom: 10px;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate.fade-in {
+    animation: fadeInDown 0.8s ease forwards;
+}
+
+.animate.slide-up {
+    animation: slideUp 0.8s ease forwards;
+}
+
+</style>
+
+<body>
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+          <div class="flex items-center">
+          <h1 class="font-['Pacifico'] text-primary text-3xl mr-8">logo</h1>
+          <nav class="hidden md:flex space-x-8">
+            <a href="#features" class="text-gray-700 hover:text-primary font-medium">Features</a>
+            <a href="{%url 'dashboard' %}" class="text-gray-700 hover:text-primary font-medium">Dashboard</a>
+            <a href="#analytics" class="text-gray-700 hover:text-primary font-medium">Analytics</a>
+            <a href="#testimonials" class="text-gray-700 hover:text-primary font-medium">Testimonials</a>
+          </nav>
+          </div>
+          <div class="flex items-center space-x-4">
+          {% if user.is_authenticated %}
+            <span class="text-gray-700 font-medium">Hello, {{ user.username }}</span>
+            <a href="{% url 'logout' %}" class="text-gray-700 hover:text-primary font-medium">Logout</a>
+          {% else %}
+            <a href="{% url 'login' %}" class="text-gray-700 hover:text-primary font-medium">Login</a>
+            <a href="{% url 'signup' %}" class="bg-primary hover:bg-primary/90 text-white py-2 px-6 !rounded-button font-medium whitespace-nowrap transition duration-200">Get Started</a>
+          {% endif %}
+          </div>
+        </div>
+      </header>
+    <div class="dashboard-container">
+        <h1>🌾 Farm Dashboard</h1>
+
+        <div class="dashboard-actions">
+            <button class="btn">➕ Add Task</button>
+            <button class="btn">📊 View Reports</button>
+            <button onclick="location.reload()" class="btn">☁ Sync Weather</button>
+            <button class="btn">🛒 Marketplace</button>
+        </div>
+
+        <div class="card-grid">
+
+            <!-- Weather -->
+            <div class="card animate fade-in">
+                <h2>🌤 Weather</h2>
+                <p>Temperature: {{ weather.temperature }}°C</p>
+                <p>Humidity: {{ weather.humidity }}%</p>
+                <p>Rain Chance: {{ weather.rain_chance }}%</p>
+            </div>
+
+            <!-- Soil -->
+            <div class="card animate fade-in">
+                <h2>🧪 Soil Data</h2>
+                <p>Moisture: {{ soil.moisture }}%</p>
+                <p>pH: {{ soil.ph }}</p>
+                <p>Nutrients: {{ soil.nutrients }}</p>
+            </div>
+
+            <!-- Crops -->
+            <div class="card animate fade-in">
+                <h2>🌱 Crops</h2>
+                <p>Active Crops: {{ crops.active }}</p>
+                <p>Yield: {{ crops.yield }} kg</p>
+            </div>
+
+            <!-- Tasks -->
+            <div class="card animate fade-in">
+                <h2>📅 Today's Tasks</h2>
+                <ul>
+                    {% for task in tasks %}
+                        <li>✅ {{ task }}</li>
+                    {% empty %}
+                        <li>No tasks for today.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <!-- Inventory -->
+            <div class="card animate slide-up">
+                <h2>📦 Inventory</h2>
+                <p>Seeds: {{ inventory.seeds }}</p>
+                <p>Fertilizers: {{ inventory.fertilizers }}</p>
+                <p>Tools Available: {{ inventory.tools }}</p>
+            </div>
+        </div>
+    </div>
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <h1 class="font-['Pacifico'] text-white text-3xl mb-4">logo</h1>
+              <p class="text-gray-400 mb-4">Empowering farmers with smart technology for sustainable agriculture.</p>
+              <div class="flex space-x-4">
+                <a href="#" class="text-gray-400 hover:text-white">
+                  <i class="ri-facebook-fill ri-lg"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white">
+                  <i class="ri-twitter-fill ri-lg"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white">
+                  <i class="ri-instagram-fill ri-lg"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white">
+                  <i class="ri-linkedin-fill ri-lg"></i>
+                </a>
+              </div>
+            </div>
+            
+            <div>
+              <h3 class="text-lg font-semibold mb-4">Features</h3>
+              <ul class="space-y-2">
+                <li><a href="#" class="text-gray-400 hover:text-white">Weather Forecasting</a></li>
+                <li><a href="#" class="text-gray-400 hover:text-white">Crop Monitoring</a></li>
+                <li><a href="#" class="text-gray-400 hover:text-white">Smart Irrigation</a></li>
+                <li><a href="#" class="text-gray-400 hover:text-white">Pest Detection</a></li>
+                <li><a href="#" class="text-gray-400 hover:text-white">Yield Prediction</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 class="text-lg font-semibold mb-4">Resources</h3>
+              <ul class="space-y-2">
+                <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                <li><a href="#" class="text-gray-400 hover:text-white">Knowledge Base</a></li>
+                <li><a href="#" class="text-gray-400 hover:text-white">Case Studies</a></li>
+                <li><a href="#" class="text-gray-400 hover:text-white">Webinars</a></li>
+                <li><a href="#" class="text-gray-400 hover:text-white">API Documentation</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 class="text-lg font-semibold mb-4">Contact</h3>
+              <ul class="space-y-2">
+                <li class="flex items-center">
+                  <i class="ri-map-pin-line mr-2"></i>
+                  <span class="text-gray-400">123 Farm Road, Agritech Valley, CA 94123</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="ri-mail-line mr-2"></i>
+                  <a href="mailto:info@farmingdashboard.com" class="text-gray-400 hover:text-white">info@farmingdashboard.com</a>
+                </li>
+                <li class="flex items-center">
+                  <i class="ri-phone-line mr-2"></i>
+                  <a href="tel:+18005551234" class="text-gray-400 hover:text-white">+1 (800) 555-1234</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-400 mb-4 md:mb-0">© 2025 Farming Dashboard. All rights reserved.</p>
+            <div class="flex space-x-6">
+              <a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a>
+              <a href="#" class="text-gray-400 hover:text-white">Terms of Service</a>
+              <a href="#" class="text-gray-400 hover:text-white">Cookie Policy</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+</body>
+
+
+</html>
