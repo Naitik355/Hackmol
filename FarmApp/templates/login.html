@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Farming Site Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: #f0fdf4;
+      height: 100vh;
+      display: flex;
+      overflow: hidden;
+      transition: all 0.8s ease-in-out;
+    }
+
+    .image-section, .form-section {
+      flex: 1;
+      transition: transform 0.8s ease-in-out;
+    }
+
+    .image-section {
+      background: url('https://www.theindiaforum.in/sites/default/files/field/image/2021/05/28/ramkumar-radhakrishnan-wikimedia-1622193304.jpeg') center/cover no-repeat;
+      animation: slideImage 0.8s ease forwards;
+      background-size: cover;
+      
+    }
+
+    @keyframes slideImage {
+      0% {
+        transform: translateX(-50px);
+        opacity: 0.5;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .form-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to right, #ffffff, #414820);
+      padding: 3rem;
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+      animation: slideForm 0.8s ease forwards;
+    }
+
+    @keyframes slideForm {
+      0% {
+        transform: translateX(50px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #166534;
+      margin-bottom: 1.5rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+      background: #f0fdf4;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #10b981;
+      color: white;
+      font-weight: 600;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #059669;
+    }
+
+    .signup-link {
+      margin-top: 1rem;
+      text-align: center;
+      color: #5b772e;
+    }
+
+    .signup-link a {
+      color: #bfd614;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="image-section"></div>
+
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  {% endif %}
+  <div class="form-section">
+    <div class="container">
+      <h2>Login to Your Farm Account</h2>
+      <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" placeholder="Username" name="username" />
+        <!-- <input type="email" placeholder="Email" name="email" /> -->
+        <input type="password" placeholder="Password" name="password" />
+        <button type="submit">Login</button>
+      </form>
+      <div class="signup-link">
+        Don't have an account? <a href="{% url 'signup' %}">Sign up here</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
