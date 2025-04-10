@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Pesticides & Insecticides</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config = { theme: { extend: { colors: { primary: '#2A9D8F', secondary: '#E9C46A' }, borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' } } } }</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <style>
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .hero-section {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9) 40%, rgba(255, 255, 255, 0.5) 70%, rgba(255, 255, 255, 0) 100%), url('https://public.readdy.ai/ai/img_res/257ecf65129ce0d002da9a4bd10ec83a.jpg');
+            background-size: cover;
+            background-position: right center;
+        }
+
+        .animate-fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        .animate-slide-in {
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideIn 1s ease-out forwards;
+        }
+
+        .animate-slide-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 0.8s ease-out forwards;
+        }
+
+        .animate-delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .animate-delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .animate-delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        .animate-delay-4 {
+            animation-delay: 0.8s;
+        }
+
+        .info-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon-container {
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover .icon-container {
+            transform: rotate(10deg);
+        }
+
+        .progress-bar {
+            position: relative;
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e5e7eb;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-color: var(--fill-color, #2A9D8F);
+            width: 0;
+            transition: width 1.5s ease-out;
+        }
+
+        .animate-progress .progress-bar-fill {
+            width: var(--fill-width, 0%);
+        }
+
+        .flip-card {
+            perspective: 1000px;
+            height: 300px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+
+        .custom-bullet {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .custom-bullet::before {
+            content: "";
+            display: block;
+            min-width: 24px;
+            height: 24px;
+            margin-right: 12px;
+            background-color: #2A9D8F;
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M10.0007 15.1709L19.1931 5.97852L20.6073 7.39273L10.0007 17.9993L3.63672 11.6354L5.05093 10.2212L10.0007 15.1709Z'%3E%3C/path%3E%3C/svg%3E");
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            mask-position: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Custom input styles */
+        .custom-input {
+            border: 2px solid #e5e7eb;
+            transition: border-color 0.3s;
+        }
+
+        .custom-input:focus {
+            border-color: #2A9D8F;
+            outline: none;
+        }
+
+        .custom-button {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .custom-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(42, 157, 143, 0.2);
+        }
+
+        .custom-button:active {
+            transform: translateY(0);
+        }
+
+        /* Custom checkbox */
+        .custom-checkbox {
+            position: relative;
+            padding-left: 35px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 22px;
+            width: 22px;
+            background-color: #fff;
+            border: 2px solid #e5e7eb;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .custom-checkbox:hover input~.checkmark {
+            border-color: #2A9D8F;
+        }
+
+        .custom-checkbox input:checked~.checkmark {
+            background-color: #2A9D8F;
+            border-color: #2A9D8F;
+        }
+
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        .custom-checkbox input:checked~.checkmark:after {
+            display: block;
+        }
+
+        .custom-checkbox .checkmark:after {
+            left: 7px;
+            top: 3px;
+            width: 6px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        /* Safety Tips Section */
+        .safety-tips-section {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            border-left: 4px solid #2A9D8F;
+        }
+
+        .safety-tip-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .safety-tip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Navigation -->
+    <header class="bg-gradient-to-r from-white to-gray-50 shadow-sm fixed w-full top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="text-3xl font-['Pacifico'] text-primary animate-fade-in">logo</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#"
+                    class="text-gray-800 hover:text-primary transition-colors duration-300 font-medium animate-fade-in animate-delay-1">Home</a>
+                <a href="#"
+                    class="text-primary border-b-2 border-primary font-medium animate-fade-in animate-delay-2">About
+                    Pesticides</a>
+                <a href="#"
+                    class="text-gray-800 hover:text-primary transition-colors duration-300 font-medium animate-fade-in animate-delay-3">Products</a>
+                <a href="#"
+                    class="text-gray-800 hover:text-primary transition-colors duration-300 font-medium animate-fade-in animate-delay-4">Services</a>
+                <a href="#"
+                    class="text-gray-800 hover:text-primary transition-colors duration-300 font-medium animate-fade-in animate-delay-4">Contact</a>
+            </nav>
+            <div class="md:hidden w-8 h-8 flex items-center justify-center">
+                <i class="ri-menu-line ri-lg"></i>
+            </div>
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="#"
+                    class="bg-primary text-white px-5 py-2 !rounded-button font-medium hover:bg-opacity-90 transition-all duration-300 whitespace-nowrap animate-fade-in animate-delay-4 custom-button">Get
+                    Started</a>
+            </div>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero-section min-h-[650px] pt-24 flex items-center w-full">
+        <div class="container mx-auto px-4 w-full">
+            <div class="max-w-2xl">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 animate-slide-in">Understanding Modern
+                    Pesticides & Insecticides</h1>
+                <p class="text-lg text-gray-700 mb-8 animate-slide-in animate-delay-1">Discover the science, safety, and
+                    sustainability behind today's crop protection solutions. Our comprehensive guide helps you make
+                    informed decisions for effective pest management.</p>
+                <div class="flex flex-wrap gap-4 animate-slide-in animate-delay-2">
+                    <a href="#learn-more"
+                        class="bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-opacity-90 transition-all duration-300 whitespace-nowrap custom-button">Learn
+                        More</a>
+                    <a href="#contact"
+                        class="bg-white border-2 border-primary text-primary px-6 py-3 !rounded-button font-medium hover:bg-gray-50 transition-all duration-300 whitespace-nowrap custom-button">Contact
+                        Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Introduction Section -->
+    <section id="learn-more" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">The Science of Modern Pest Control</h2>
+                <p class="text-gray-700">Today's pesticides and insecticides are the result of decades of research and
+                    innovation, designed to protect crops while minimizing environmental impact.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="info-card bg-white rounded-lg shadow-md p-6 border border-gray-100">
+                    <div
+                        class="icon-container w-16 h-16 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mb-4">
+                        <i class="ri-leaf-line ri-xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Eco-Friendly Formulations</h3>
+                    <p class="text-gray-700 mb-4">Modern pesticides are designed with biodegradable compounds that break
+                        down naturally, reducing long-term environmental impact while maintaining effectiveness.</p>
+                    <a href="#" class="text-primary font-medium flex items-center hover:underline"
+                        id="eco-friendly-learn-more">
+                        Learn more
+                        <i class="ri-arrow-right-line ml-1"></i>
+                    </a>
+                    <div id="eco-friendly-content" class="mt-4 pt-4 border-t border-gray-100 hidden">
+                        <h4 class="text-lg font-medium text-gray-900 mb-2">Biodegradable Technology</h4>
+                        <p class="text-gray-700 mb-3">Our eco-friendly formulations utilize advanced microencapsulation
+                            technology that allows active ingredients to break down into harmless compounds within 7-14
+                            days after application, compared to 30+ days for conventional products.</p>
+                        <ul class="space-y-2 text-gray-700 mb-3">
+                            <li class="flex items-start">
+                                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                <span>Reduced soil persistence by up to 65%</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                <span>Minimal groundwater contamination risk</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                <span>Safe for beneficial soil microorganisms</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="text-sm text-gray-500 flex items-center" id="eco-friendly-show-less">
+                            Show less
+                            <i class="ri-arrow-up-s-line ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="info-card bg-white rounded-lg shadow-md p-6 border border-gray-100">
+                    <div
+                        class="icon-container w-16 h-16 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mb-4">
+                        <i class="ri-test-tube-line ri-xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Targeted Application</h3>
+                    <p class="text-gray-700 mb-4">Precision formulations target specific pests while minimizing impact
+                        on beneficial insects, creating a more balanced and sustainable agricultural ecosystem.</p>
+                    <a href="#" class="text-primary font-medium flex items-center hover:underline"
+                        id="targeted-learn-more">
+                        Learn more
+                        <i class="ri-arrow-right-line ml-1"></i>
+                    </a>
+                    <div id="targeted-content" class="mt-4 pt-4 border-t border-gray-100 hidden">
+                        <h4 class="text-lg font-medium text-gray-900 mb-2">Receptor-Specific Technology</h4>
+                        <p class="text-gray-700 mb-3">Our targeted formulations use molecular design to interact only
+                            with specific neural receptors found in target pest species but absent in beneficial insects
+                            like bees, ladybugs, and predatory wasps.</p>
+                        <div class="bg-gray-50 p-3 rounded-lg mb-3">
+                            <p class="text-sm font-medium text-gray-900">Selectivity Index Comparison</p>
+                            <div class="flex justify-between items-center mt-2">
+                                <span class="text-xs text-gray-600">Conventional Products</span>
+                                <span class="text-xs text-gray-600">1.2-2.5x</span>
+                            </div>
+                            <div class="progress-bar mt-1 mb-2" style="height: 6px;">
+                                <div class="progress-bar-fill" style="--fill-color: #E9C46A; width: 40%;"></div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-gray-600">Our Targeted Formulations</span>
+                                <span class="text-xs text-gray-600">8.5-12.3x</span>
+                            </div>
+                            <div class="progress-bar mt-1" style="height: 6px;">
+                                <div class="progress-bar-fill" style="--fill-color: #2A9D8F; width: 90%;"></div>
+                            </div>
+                        </div>
+                        <a href="#" class="text-sm text-gray-500 flex items-center" id="targeted-show-less">
+                            Show less
+                            <i class="ri-arrow-up-s-line ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="info-card bg-white rounded-lg shadow-md p-6 border border-gray-100">
+                    <div
+                        class="icon-container w-16 h-16 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mb-4">
+                        <i class="ri-shield-check-line ri-xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Safety Standards</h3>
+                    <p class="text-gray-700 mb-4">Rigorous testing and certification ensure that all products meet the
+                        highest safety standards for farmers, consumers, and the environment before market approval.</p>
+                    <a href="#" class="text-primary font-medium flex items-center hover:underline"
+                        id="safety-learn-more">
+                        Learn more
+                        <i class="ri-arrow-right-line ml-1"></i>
+                    </a>
+                    <div id="safety-content" class="mt-4 pt-4 border-t border-gray-100 hidden">
+                        <h4 class="text-lg font-medium text-gray-900 mb-2">Comprehensive Testing Protocol</h4>
+                        <p class="text-gray-700 mb-3">Each product undergoes over 120 different safety tests across a
+                            5-7 year development period before reaching market, including:</p>
+                        <div class="grid grid-cols-2 gap-2 mb-3">
+                            <div class="bg-primary bg-opacity-5 p-2 rounded">
+                                <p class="text-sm font-medium text-gray-900">Acute Toxicity</p>
+                                <p class="text-xs text-gray-700">12+ test species</p>
+                            </div>
+                            <div class="bg-primary bg-opacity-5 p-2 rounded">
+                                <p class="text-sm font-medium text-gray-900">Chronic Exposure</p>
+                                <p class="text-xs text-gray-700">2-year studies</p>
+                            </div>
+                            <div class="bg-primary bg-opacity-5 p-2 rounded">
+                                <p class="text-sm font-medium text-gray-900">Environmental Fate</p>
+                                <p class="text-xs text-gray-700">Soil, water, air</p>
+                            </div>
+                            <div class="bg-primary bg-opacity-5 p-2 rounded">
+                                <p class="text-sm font-medium text-gray-900">Residue Analysis</p>
+                                <p class="text-xs text-gray-700">
+                                    < 0.01 ppm detection</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-700 mb-3">Our standards exceed regulatory requirements by an average
+                            of 35%, with particular emphasis on pollinator safety and groundwater protection.</p>
+                        <a href="#" class="text-sm text-gray-500 flex items-center" id="safety-show-less">
+                            Show less
+                            <i class="ri-arrow-up-s-line ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Types of Pesticides Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Types of Pesticides</h2>
+                <p class="text-gray-700">Understanding the different categories of pesticides helps in selecting the
+                    right solution for specific pest challenges.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Flip Card 1 -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div
+                            class="flip-card-front bg-white rounded-lg shadow-md p-6 flex flex-col justify-center items-center">
+                            <div
+                                class="w-20 h-20 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mb-4">
+                                <i class="ri-bug-line ri-2x text-primary"></i>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Insecticides</h3>
+                            <p class="text-gray-700 text-center">Specifically designed to control insect populations</p>
+                            <p class="text-sm text-gray-500 mt-4">(Hover to learn more)</p>
+                        </div>
+                        <div class="flip-card-back bg-primary text-white rounded-lg shadow-md p-6">
+                            <h3 class="text-xl font-semibold mb-4">Types of Insecticides:</h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-center">
+                                    <i class="ri-checkbox-circle-line mr-2"></i>
+                                    <span>Systemic insecticides</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="ri-checkbox-circle-line mr-2"></i>
+                                    <span>Contact insecticides</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="ri-checkbox-circle-line mr-2"></i>
+                                    <span>Biological insecticides</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="ri-checkbox-circle-line mr-2"></i>
+                                    <span>Residual insecticides</span>
+                                </li>
+                            </ul>
+                            <p class="mt-4 text-sm">Common targets: aphids, caterpillars, beetles, and other
+                                crop-damaging insects</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Flip Card 2 -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div
+                            class="flip-card-front bg-white rounded-lg shadow-md p-6 flex flex-col justify-center items-center">
+                            <div
+                                class="w-20 h-20 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mb-4">
+                                <i class="ri-plant-line ri-2x text-primary"></i>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Herbicides</h3>
+                            <p class="text-gray-700 text-center">Control unwanted plant growth and weeds</p>
+                            <p class="text-sm text-gray-500 mt-4">(Hover to learn more)</p>
+                        </div>
+                        <div class="flip-card-back bg-primary text-white rounded-lg shadow-md p-6">
+                            <h3 class="text-xl font-semibold mb-4">Types of Herbicides:</h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-center">
+                                    <i class="ri-checkbox-circle-line mr-2"></i>
+                                    <span>Selective herbicides</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="ri-checkbox-circle-line mr-2"></i>
+                                    <span>Non-selective herbicides</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="ri-checkbox-circle-line mr-2"></i>
+                                    <span>Pre-emergent herbicides</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="ri-checkbox-circle-line mr-2"></i>
+                                    <span>Post-emergent herbicides</span>
+                                </li>
+                            </ul>
+                            <p class="mt-4 text-sm">Application: Precision spraying to minimize drift and protect
+                                desirable plants</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Flip Card 3 -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div
+                            class="flip-card-front bg-white rounded-lg shadow-md p-6 flex flex-col justify-center items-center">
+                            <div
+                                class="w-20 h-20 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mb-4">
+                                <i class="ri-virus-line ri-2x text-primary"></i>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Fungicides</h3>
+                            <p class="text-gray-700 text-center">Prevent and treat fungal diseases in crops</p>
+                            <p class="text-sm text-gray-500 mt-4">(Hover to learn more)</p>
+                        </div>
+                        <div class="flip-card-back bg-primary text-white rounded-lg shadow-md p-6">
+                            <h3 class="text-xl font-semibold mb-4">Types of Fungicides:</h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-center">
+                                    <i class="ri-checkbox-circle-line mr-2"></i>
+                                    <span>Contact fungicides</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="ri-checkbox-circle-line mr-2"></i>
+                                    <span>Systemic fungicides</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="ri-checkbox-circle-line mr-2"></i>
+                                    <span>Preventative fungicides</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="ri-checkbox-circle-line mr-2"></i>
+                                    <span>Curative fungicides</span>
+                                </li>
+                            </ul>
+                            <p class="mt-4 text-sm">Common targets: powdery mildew, rust, blight, and other fungal
+                                pathogens</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Flip Card 4 -->
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div
+                            class="flip-card-front bg-white rounded-lg shadow-md p-6 flex flex-col justify-center items-center">
+                            <div
+                                class="w-20 h-20 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mb-4">
+                                <i class="ri-mouse-line ri-2x text-primary"></i>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-gray-900 mb-2">Rodenticides</h3>
+                            <p class="text-gray-700 text-center">Control rodent populations in agricultural settings</p>
+                            <p class="text-sm text-gray-500 mt-4">(Hover to learn more)</p>
+                        </div>
+                        <div class="flip-card-back bg-primary text-white rounded-lg shadow-md p-6">
+                            <h3 class="text-xl font-semibold mb-4">Types of Rodenticides:</h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-center">
+                                    <i class="ri-checkbox-circle-line mr-2"></i>
+                                    <span>Acute rodenticides</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="ri-checkbox-circle-line mr-2"></i>
+                                    <span>Anticoagulant rodenticides</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="ri-checkbox-circle-line mr-2"></i>
+                                    <span>First-generation compounds</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="ri-checkbox-circle-line mr-2"></i>
+                                    <span>Second-generation compounds</span>
+                                </li>
+                            </ul>
+                            <p class="mt-4 text-sm">Safety: Modern formulations include bait stations to prevent
+                                non-target exposure</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Effectiveness Metrics Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Effectiveness Metrics</h2>
+                <p class="text-gray-700">Understanding the performance metrics of different pesticide categories helps
+                    in making informed decisions for crop protection.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+                <!-- Metric 1 -->
+                <div class="animate-progress">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-medium text-gray-700">Organic Insecticides</span>
+                        <span class="font-medium text-gray-700">75%</span>
+                    </div>
+                    <div class="progress-bar mb-6">
+                        <div class="progress-bar-fill" style="--fill-color: #2A9D8F; --fill-width: 75%"></div>
+                    </div>
+                    <p class="text-sm text-gray-600">Effective against common pests while maintaining ecological balance
+                    </p>
+                </div>
+                <!-- Metric 2 -->
+                <div class="animate-progress">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-medium text-gray-700">Synthetic Insecticides</span>
+                        <span class="font-medium text-gray-700">92%</span>
+                    </div>
+                    <div class="progress-bar mb-6">
+                        <div class="progress-bar-fill" style="--fill-color: #E9C46A; --fill-width: 92%"></div>
+                    </div>
+                    <p class="text-sm text-gray-600">High efficacy against resistant pests with longer residual activity
+                    </p>
+                </div>
+                <!-- Metric 3 -->
+                <div class="animate-progress">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-medium text-gray-700">Biological Controls</span>
+                        <span class="font-medium text-gray-700">68%</span>
+                    </div>
+                    <div class="progress-bar mb-6">
+                        <div class="progress-bar-fill" style="--fill-color: #2A9D8F; --fill-width: 68%"></div>
+                    </div>
+                    <p class="text-sm text-gray-600">Natural predators and pathogens with minimal environmental impact
+                    </p>
+                </div>
+                <!-- Metric 4 -->
+                <div class="animate-progress">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-medium text-gray-700">Integrated Pest Management</span>
+                        <span class="font-medium text-gray-700">88%</span>
+                    </div>
+                    <div class="progress-bar mb-6">
+                        <div class="progress-bar-fill" style="--fill-color: #E9C46A; --fill-width: 88%"></div>
+                    </div>
+                    <p class="text-sm text-gray-600">Combined approach using multiple control methods for optimal
+                        results</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Safety & Environmental Impact Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Safety & Environmental Considerations</h2>
+                <p class="text-gray-700">Modern pesticide development focuses on balancing effectiveness with
+                    environmental stewardship and human safety.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="https://public.readdy.ai/ai/img_res/52fa25f7134597245839e7bcf03bb1eb.jpg"
+                        alt="Pesticide safety testing" class="rounded-lg shadow-md w-full h-auto object-cover">
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-6">Key Safety Protocols</h3>
+                    <div class="space-y-6">
+                        <div class="custom-bullet">
+                            <span class="ml-2">Rigorous testing for human and environmental safety before
+                                approval</span>
+                        </div>
+                        <div class="custom-bullet">
+                            <span class="ml-2">Strict application guidelines to minimize exposure risks</span>
+                        </div>
+                        <div class="custom-bullet">
+                            <span class="ml-2">Continuous monitoring of environmental impact post-approval</span>
+                        </div>
+                        <div class="custom-bullet">
+                            <span class="ml-2">Development of lower-toxicity alternatives to older compounds</span>
+                        </div>
+                        <div class="custom-bullet">
+                            <span class="ml-2">Training programs for proper handling and application techniques</span>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <button id="safetyGuidelinesBtn"
+                            class="bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-opacity-90 transition-all duration-300 whitespace-nowrap custom-button"><a
+                                href="pesticide_safety.pdf" download class="download-btn">📄 Download PDF
+                                Guide</a></button>
+
+                    </div>
+    </section>
+    <!-- Safety Tips Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Farmer Safety Tips</h2>
+                <p class="text-gray-700">Protecting yourself and the environment when working with pesticides is
+                    essential for sustainable farming.</p>
+            </div>
+            <div class="safety-tips-section p-6 md:p-8 max-w-5xl mx-auto mb-12">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                            <div
+                                class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mr-3">
+                                <i class="ri-user-shield-line text-primary"></i>
+                            </div>
+                            Personal Protection
+                        </h3>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                <span>✅ Wear gloves, mask, and protective clothing while spraying</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                <span>✅ Avoid inhaling fumes or letting chemicals touch skin</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                <span>✅ Wash hands, tools, and clothes after use</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                <span>✅ Store pesticides away from food, water, and children</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                            <div
+                                class="w-10 h-10 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mr-3">
+                                <i class="ri-earth-line text-primary"></i>
+                            </div>
+                            Environmental Care
+                        </h3>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                <span>🌍 Don't over-spray—only use recommended amounts</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                <span>🌍 Avoid spraying near rivers, lakes, or irrigation sources</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                <span>🌍 Rotate insecticides to reduce pest resistance</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                <span>🌍 Choose eco-friendly options like neem oil or bio-insecticides when
+                                    possible</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="safety-tip-card bg-white rounded-lg shadow-md p-6 border border-gray-100">
+                    <div class="w-14 h-14 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mb-4">
+                        <i class="ri-calendar-check-line ri-xl text-primary"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Timing Matters</h3>
+                    <p class="text-gray-700">Apply pesticides early morning or late evening when beneficial insects are
+                        less active and temperatures are cooler for better effectiveness.</p>
+                </div>
+                <div class="safety-tip-card bg-white rounded-lg shadow-md p-6 border border-gray-100">
+                    <div class="w-14 h-14 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mb-4">
+                        <i class="ri-wind-line ri-xl text-primary"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Weather Awareness</h3>
+                    <p class="text-gray-700">Avoid spraying on windy days to prevent drift. Check weather forecasts for
+                        rain that could wash away treatments before they're effective.</p>
+                </div>
+                <div class="safety-tip-card bg-white rounded-lg shadow-md p-6 border border-gray-100">
+                    <div class="w-14 h-14 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mb-4">
+                        <i class="ri-file-list-3-line ri-xl text-primary"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Keep Records</h3>
+                    <p class="text-gray-700">Document all pesticide applications including product, rate, date, and
+                        weather conditions to track effectiveness and plan future treatments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Application Methods Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Modern Application Methods</h2>
+                <p class="text-gray-700">Advances in application technology have dramatically improved precision and
+                    reduced environmental impact.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Method 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://public.readdy.ai/ai/img_res/1c6be0235a2fcf2ef2c352d2d9e05b08.jpg"
+                            alt="Drone application" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Drone Application</h3>
+                        <p class="text-gray-700 mb-4">Unmanned aerial vehicles provide precise application to targeted
+                            areas, reducing overall pesticide use while improving coverage in difficult terrain.</p>
+                        <div class="flex items-center text-sm text-gray-600">
+                            <div class="w-6 h-6 flex items-center justify-center mr-2">
+                                <i class="ri-check-line text-primary"></i>
+                            </div>
+                            <span>Reduces worker exposure</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-600 mt-2">
+                            <div class="w-6 h-6 flex items-center justify-center mr-2">
+                                <i class="ri-check-line text-primary"></i>
+                            </div>
+                            <span>Minimizes drift with precision targeting</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Method 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://public.readdy.ai/ai/img_res/badc76ce263a36c79e3525fbe4f20c6c.jpg"
+                            alt="Smart sprayers" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Smart Sprayers</h3>
+                        <p class="text-gray-700 mb-4">Computer-controlled systems with sensors detect plant presence and
+                            automatically adjust spray patterns to minimize waste and environmental impact.</p>
+                        <div class="flex items-center text-sm text-gray-600">
+                            <div class="w-6 h-6 flex items-center justify-center mr-2">
+                                <i class="ri-check-line text-primary"></i>
+                            </div>
+                            <span>Reduces chemical usage by up to 90%</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-600 mt-2">
+                            <div class="w-6 h-6 flex items-center justify-center mr-2">
+                                <i class="ri-check-line text-primary"></i>
+                            </div>
+                            <span>Integrates with farm management software</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Method 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://public.readdy.ai/ai/img_res/7fa0876b41e5adb27313914d5d721960.jpg"
+                            alt="Seed treatment" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Seed Treatment</h3>
+                        <p class="text-gray-700 mb-4">Pre-planting application of protective compounds directly to seeds
+                            provides targeted protection during vulnerable early growth stages.</p>
+                        <div class="flex items-center text-sm text-gray-600">
+                            <div class="w-6 h-6 flex items-center justify-center mr-2">
+                                <i class="ri-check-line text-primary"></i>
+                            </div>
+                            <span>Minimizes environmental exposure</span>
+                        </div>
+                        <div class="flex items-center text-sm text-gray-600 mt-2">
+                            <div class="w-6 h-6 flex items-center justify-center mr-2">
+                                <i class="ri-check-line text-primary"></i>
+                            </div>
+                            <span>Reduces total pesticide volume needed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Sustainable Practices Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Sustainable Pest Management</h2>
+                <p class="text-gray-700">The future of pest control combines traditional knowledge with cutting-edge
+                    technology to create more sustainable agricultural systems.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-6">Integrated Pest Management (IPM)</h3>
+                    <div class="space-y-4 mb-8">
+                        <p class="text-gray-700">IPM combines multiple pest control strategies to minimize economic,
+                            health, and environmental risks. This holistic approach includes:</p>
+                        <div class="custom-bullet">
+                            <span class="ml-2">Regular monitoring and identification of pest populations</span>
+                        </div>
+                        <div class="custom-bullet">
+                            <span class="ml-2">Setting action thresholds before implementing controls</span>
+                        </div>
+                        <div class="custom-bullet">
+                            <span class="ml-2">Using biological controls like beneficial insects</span>
+                        </div>
+                        <div class="custom-bullet">
+                            <span class="ml-2">Cultural practices that reduce pest-favorable conditions</span>
+                        </div>
+                        <div class="custom-bullet">
+                            <span class="ml-2">Targeted chemical applications only when necessary</span>
+                        </div>
+                    </div>
+                    <button id="ipmGuideBtn"
+                        class="bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-opacity-90 transition-all duration-300 whitespace-nowrap custom-button">Download
+                        IPM Guide</button>
+                    <!-- IPM Guide Modal -->
+                    <div id="ipmModal"
+                        class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+                        <div class="bg-white rounded-lg max-w-2xl w-full mx-4 overflow-hidden shadow-xl">
+                            <div class="p-6 border-b border-gray-200">
+                                <div class="flex justify-between items-center">
+                                    <h3 class="text-2xl font-semibold text-gray-900">Integrated Pest Management Guide
+                                    </h3>
+                                    <button id="closeIpmModal" class="text-gray-500 hover:text-gray-700">
+                                        <i class="ri-close-line ri-lg"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-6 max-h-96 overflow-y-auto">
+                                <div class="mb-6">
+                                    <h4 class="text-lg font-medium text-gray-900 mb-3">IPM Guide Preview</h4>
+                                    <p class="text-gray-700 mb-4">This comprehensive guide covers essential strategies
+                                        and best practices for implementing Integrated Pest Management in various
+                                        agricultural settings.</p>
+                                    <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                                        <h5 class="font-medium text-gray-900 mb-2">Key Topics Included:</h5>
+                                        <ul class="space-y-2 text-gray-700">
+                                            <li class="flex items-start">
+                                                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                                <span>Pest identification and monitoring techniques</span>
+                                            </li>
+                                            <li class="flex items-start">
+                                                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                                <span>Setting economic thresholds for intervention</span>
+                                            </li>
+                                            <li class="flex items-start">
+                                                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                                <span>Biological control methods and beneficial organisms</span>
+                                            </li>
+                                            <li class="flex items-start">
+                                                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                                <span>Cultural practices to prevent pest problems</span>
+                                            </li>
+                                            <li class="flex items-start">
+                                                <i class="ri-check-line text-primary mr-2 mt-1"></i>
+                                                <span>Targeted chemical application strategies</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <p class="text-gray-700">The complete document is a 36-page PDF (4.5 MB) that
+                                        includes detailed illustrations, decision-making flowcharts, and seasonal
+                                        planning calendars.</p>
+                                </div>
+                            </div>
+                            <div
+                                class="p-6 bg-gray-50 border-t border-gray-200 flex flex-col sm:flex-row gap-4 justify-end">
+                                <button id="viewIpmOnlineBtn"
+                                    class="bg-white border-2 border-primary text-primary px-6 py-3 !rounded-button font-medium hover:bg-gray-50 transition-all duration-300 whitespace-nowrap custom-button">View
+                                    Online</button>
+                                <button id="downloadIpmPdfBtn"
+                                    class="bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-opacity-90 transition-all duration-300 whitespace-nowrap custom-button">Download
+                                    PDF</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <img src="https://public.readdy.ai/ai/img_res/9ff6570a728bbfad6205738c885515ea.jpg"
+                        alt="Integrated Pest Management" class="rounded-lg shadow-md w-full h-auto object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FAQ Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+                <p class="text-gray-700">Find answers to common questions about modern pesticides and their application.
+                </p>
+            </div>
+            <div class="max-w-3xl mx-auto">
+                <!-- FAQ Item 1 -->
+                <div class="border-b border-gray-200 pb-4 mb-4">
+                    <button class="flex justify-between items-center w-full text-left py-2 focus:outline-none">
+                        <h3 class="text-lg font-medium text-gray-900">Are modern pesticides safe for the environment?
+                        </h3>
+                        <div class="w-6 h-6 flex items-center justify-center">
+                            <i class="ri-arrow-down-s-line"></i>
+                        </div>
+                    </button>
+                    <div class="mt-2 hidden">
+                        <p class="text-gray-700">Modern pesticides undergo rigorous environmental testing before
+                            approval. They're designed to break down more quickly in the environment and have more
+                            targeted effects than older generations of pesticides. When used according to label
+                            instructions, they pose minimal environmental risk. Many newer formulations are specifically
+                            designed to protect beneficial insects, aquatic life, and other non-target organisms.</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="border-b border-gray-200 pb-4 mb-4">
+                    <button class="flex justify-between items-center w-full text-left py-2 focus:outline-none">
+                        <h3 class="text-lg font-medium text-gray-900">How long do pesticides remain active after
+                            application?</h3>
+                        <div class="w-6 h-6 flex items-center justify-center">
+                            <i class="ri-arrow-down-s-line"></i>
+                        </div>
+                    </button>
+                    <div class="mt-2 hidden">
+                        <p class="text-gray-700">The active period varies significantly depending on the specific
+                            product, application method, and environmental conditions. Some contact insecticides may
+                            remain effective for only a few days, while systemic products can provide protection for
+                            several weeks. Modern formulations are designed with specific persistence profiles to match
+                            their intended use, with many breaking down more quickly than older products to reduce
+                            environmental impact.</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="border-b border-gray-200 pb-4 mb-4">
+                    <button class="flex justify-between items-center w-full text-left py-2 focus:outline-none">
+                        <h3 class="text-lg font-medium text-gray-900">What is the difference between organic and
+                            synthetic pesticides?</h3>
+                        <div class="w-6 h-6 flex items-center justify-center">
+                            <i class="ri-arrow-down-s-line"></i>
+                        </div>
+                    </button>
+                    <div class="mt-2 hidden">
+                        <p class="text-gray-700">Organic pesticides are derived from natural sources such as plants,
+                            bacteria, minerals, or other naturally occurring materials. Synthetic pesticides are
+                            manufactured through chemical processes. Both types undergo safety testing, though organic
+                            products must meet additional certification requirements. It's important to note that
+                            "natural" doesn't automatically mean safer—toxicity depends on the specific compound,
+                            concentration, and application method rather than its origin.</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 4 -->
+                <div class="border-b border-gray-200 pb-4 mb-4">
+                    <button class="flex justify-between items-center w-full text-left py-2 focus:outline-none">
+                        <h3 class="text-lg font-medium text-gray-900">How can farmers reduce pesticide usage while
+                            maintaining crop yields?</h3>
+                        <div class="w-6 h-6 flex items-center justify-center">
+                            <i class="ri-arrow-down-s-line"></i>
+                        </div>
+                    </button>
+                    <div class="mt-2 hidden">
+                        <p class="text-gray-700">Implementing Integrated Pest Management (IPM) is the most effective
+                            approach. This includes regular crop monitoring, using pest-resistant varieties, maintaining
+                            beneficial insect populations, practicing crop rotation, and timing applications precisely
+                            based on pest life cycles. Modern precision application technologies also significantly
+                            reduce the total amount of product needed while maintaining or even improving effectiveness.
+                        </p>
+                    </div>
+                </div>
+                <!-- FAQ Item 5 -->
+                <div>
+                    <button class="flex justify-between items-center w-full text-left py-2 focus:outline-none">
+                        <h3 class="text-lg font-medium text-gray-900">What safety precautions should be taken when
+                            applying pesticides?</h3>
+                        <div class="w-6 h-6 flex items-center justify-center">
+                            <i class="ri-arrow-down-s-line"></i>
+                        </div>
+                    </button>
+                    <div class="mt-2 hidden">
+                        <p class="text-gray-700">Always read and follow label instructions carefully—they're legally
+                            binding documents. Wear appropriate personal protective equipment (PPE) as specified on the
+                            label. Apply only during appropriate weather conditions to avoid drift. Maintain and
+                            calibrate application equipment regularly. Store products in original containers away from
+                            food, feed, and water sources. Dispose of containers properly according to local
+                            regulations. Consider getting certified through a pesticide applicator training program for
+                            additional safety knowledge.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Get Expert Advice</h2>
+                <p class="text-gray-700">Have questions about pesticide selection or application? Our team of
+                    agricultural experts is here to help.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                <div>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                            <input type="text" id="name"
+                                class="custom-input w-full px-4 py-3 !rounded-button text-gray-800 bg-white focus:ring-2 focus:ring-primary focus:ring-opacity-50"
+                                placeholder="Your name">
+                        </div>
+                        <div>
+                            <label for="email" class="

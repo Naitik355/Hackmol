@@ -28,17 +28,17 @@ body {
   <header class="bg-white shadow-sm sticky top-0 z-50">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
       <div class="flex items-center">
-        <h1 class="font-['Pacifico'] text-primary text-3xl mr-8">logo</h1>
+        <h1 class="font-['Pacifico'] text-primary text-3xl mr-8">Agronova</h1>
         <nav class="hidden md:flex space-x-8">
-          <a href="#features" class="text-gray-700 hover:text-primary font-medium">Features</a>
+          <a href="{%url 'home' %}" class="text-gray-700 hover:text-primary font-medium">Home</a>
           <a href="{%url 'dashboard'%}" class="text-gray-700 hover:text-primary font-medium">Dashboard</a>
           <a href="#" class="text-gray-700 hover:text-primary font-medium">About Pesticides</a>
           <a href="#" class="text-gray-700 hover:text-primary font-medium">About Us</a>
         </nav>
       </div>
       <div class="flex items-center space-x-4">
-        <a href="#" class="text-gray-700 hover:text-primary font-medium">Login</a>
-        <a href="#" class="bg-primary hover:bg-primary/90 text-white py-2 px-6 !rounded-button font-medium whitespace-nowrap transition duration-200">Get Started</a>
+        <a href="{%url 'login'%}" class="text-gray-700 hover:text-primary font-medium">Login</a>
+        <a href="{%url 'signup'%}" class="bg-primary hover:bg-primary/90 text-white py-2 px-6 !rounded-button font-medium whitespace-nowrap transition duration-200">Get Started</a>
       </div>
     </div>
   </header>
@@ -333,7 +333,7 @@ body {
     <div class="container mx-auto px-4">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
-          <h1 class="font-['Pacifico'] text-white text-3xl mb-4">logo</h1>
+          <h1 class="font-['Pacifico'] text-white text-3xl mb-4">Agronova</h1>
           <p class="text-gray-400 mb-4">Empowering farmers with smart technology for sustainable agriculture.</p>
           <div class="flex space-x-4">
             <a href="#" class="text-gray-400 hover:text-white">
@@ -378,7 +378,7 @@ body {
           <ul class="space-y-2">
             <li class="flex items-center">
               <i class="ri-map-pin-line mr-2"></i>
-              <span class="text-gray-400">123 Farm Road, Agritech Valley, CA 94123</span>
+              <span class="text-gray-400">Sector 26,Mohali</span>
             </li>
             <li class="flex items-center">
               <i class="ri-mail-line mr-2"></i>
@@ -386,7 +386,7 @@ body {
             </li>
             <li class="flex items-center">
               <i class="ri-phone-line mr-2"></i>
-              <a href="tel:+18005551234" class="text-gray-400 hover:text-white">+1 (800) 555-1234</a>
+              <a href="tel:+91234333443" class="text-gray-400 hover:text-white">+9132-123-4349</a>
             </li>
           </ul>
         </div>

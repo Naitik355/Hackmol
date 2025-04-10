@@ -6,6 +6,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 import requests
+import joblib
+import os
+import warnings
+from django.conf import settings
+import joblib
+
 # Create your views here.
 
 def home_view(request):
@@ -101,3 +107,30 @@ def dashboard_view(request):
         "team": {"online": 3, "completed": 7}
     }
     return render(request, 'dashboard.html', context)
+
+def crop_prediction_view(request):
+    if request.method == 'POST':
+        try:
+            nitrogen = float(request.POST.get('N'))
+            phosphorus = float(request.POST.get('P'))
+            potassium = float(request.POST.get('K'))
+            temperature = float(request.POST.get('temperature'))
+            humidity = float(request.POST.get('humidity'))
+            ph = float(request.POST.get('ph'))
+            rainfall = float(request.POST.get('rainfall'))
+
+            model_path = os.path.join(settings.BASE_DIR, 'FarmApp', 'models', 'crop_model.pkl')
+            model = joblib.load(model_path)
+            print("Received values:", nitrogen, phosphorus, potassium, temperature, humidity, ph, rainfall)
+            with warnings.catch_warnings():
+                warnings.simplefilter("ignore")
+                prediction = model.predict([[nitrogen, phosphorus, potassium, temperature, humidity, ph, rainfall]])
+                crop_name = prediction[0]
+
+            return render(request, 'dashboard.html', {'crop_name': crop_name})
+
+        except Exception as e:
+            messages.error(request, f"Error: {e}")
+            return render(request, 'dashboard.html')    
+
+    return render(request, 'home.html')

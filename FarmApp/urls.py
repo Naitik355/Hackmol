@@ -6,4 +6,6 @@ urlpatterns = [
     path('signup/', views.signup_view,name='signup'),
     path('logout/', views.logout_view,name='logout'),
     path('dashboard/', views.dashboard_view,name='dashboard'),
+    path('predict/', views.crop_prediction_view,name='predict'),
+    path('/crop_prediction', views.crop_prediction_view,name='predict'),
 ]
