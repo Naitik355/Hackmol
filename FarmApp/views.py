@@ -85,7 +85,7 @@ def dashboard_view(request):
             messages.error(request, "Failed to fetch weather data.")
     except Exception as e:
         weather = {"temperature": "N/A", "humidity": "N/A", "rain_chance": "N/A"}
-        messages.error(request, "Error fetching weather data.")
+        messages.error(request, f"Error fetching weather data: {e}")
 
     context = {
         "weather": weather,
