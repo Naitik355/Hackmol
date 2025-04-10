@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Farming Dashboard - Smart Agriculture Platform</title>
 <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-<script>tailwind.config={theme:{extend:{colors:{primary:'#2563EB',secondary:'#4ade80'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#3EA698',secondary:'#4ade80'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -31,7 +31,7 @@ body {
         <h1 class="font-['Pacifico'] text-primary text-3xl mr-8">Agrova</h1>
         <nav class="hidden md:flex space-x-8">
           <a href="#features" class="text-gray-700 hover:text-primary font-medium">Features</a>
-          <a href="#" class="text-gray-700 hover:text-primary font-medium">Dashboard</a>
+          <a href="{% url 'dashboard' %}" class="text-gray-700 hover:text-primary font-medium">Dashboard</a>
           <a href="{% url 'pesticides' %}" class="text-gray-700 hover:text-primary font-medium">Pesticides</a>
           <a href="{% url 'about' %}" class="text-gray-700 hover:text-primary font-medium">About Us</a>
         </nav>
