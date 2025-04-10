@@ -37,15 +37,20 @@ body {
         </nav>
       </div>
       <div class="flex items-center space-x-4">
-        <a href="{% url 'login' %}" class="text-gray-700 hover:text-primary font-medium">Login</a>
-        <a href="{% url 'signup' %}" class="bg-primary hover:bg-primary/90 text-white py-2 px-6 !rounded-button font-medium whitespace-nowrap transition duration-200">Get Started</a>
+        {% if user.is_authenticated %}
+          <span class="text-gray-700 font-medium">Hello, {{ user.username }}</span>
+          <a href="{% url 'logout' %}" class="text-gray-700 hover:text-primary font-medium">Logout</a>
+        {% else %}
+          <a href="{% url 'login' %}" class="text-gray-700 hover:text-primary font-medium">Login</a>
+          <a href="{% url 'signup' %}" class="bg-primary hover:bg-primary/90 text-white py-2 px-6 !rounded-button font-medium whitespace-nowrap transition duration-200">Get Started</a>
+        {% endif %}
       </div>
     </div>
   </header>
   <!-- Hero Section -->
   <section class="relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent z-10"></div>
-    <div style="background-image: url('https://public.readdy.ai/ai/img_res/abf8b3e93e4fa87a0a67e6013e904d52.jpg'); background-size: cover; background-position: center;" class="absolute inset-0"></div>
+    <div style="background-image: url('https://readdy.ai/api/search-image?query=modern farm with advanced technology, drone monitoring crops, smart irrigation systems, beautiful green fields with rows of crops, digital farming equipment, sunset light creating a warm glow over the landscape, high-resolution professional photography with soft natural lighting&width=1920&height=1080&seq=1&orientation=landscape&flag=abf8b3e93e4fa87a0a67e6013e904d52'); background-size: cover; background-position: center;" class="absolute inset-0"></div>
     <div class="container mx-auto px-4 py-24 relative z-20">
       <div class="max-w-2xl">
         <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Smart Farming Dashboard for Modern Agriculture</h1>
@@ -221,7 +226,7 @@ body {
               <div class="ml-4 text-white font-medium">Farm Dashboard</div>
             </div>
             <div class="p-6">
-              <img src="https://public.readdy.ai/ai/img_res/16405c9f65f41a714b8fb331dffeb4e1.jpg" alt="Dashboard Preview" class="rounded-lg shadow-sm w-full">
+              <img src="https://readdy.ai/api/search-image?query=modern farming dashboard interface with crop monitoring widgets, weather forecast, soil moisture levels, equipment status, yield predictions, clean design with charts and graphs, data visualization for agriculture, professional UI design&width=800&height=500&seq=2&orientation=landscape&flag=16405c9f65f41a714b8fb331dffeb4e1" alt="Dashboard Preview" class="rounded-lg shadow-sm w-full">
             </div>
           </div>
         </div>
@@ -261,7 +266,7 @@ body {
         <!-- Testimonial 1 -->
         <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
           <div class="flex items-center mb-6">
-            <img src="https://public.readdy.ai/ai/img_res/6bb915381ec94daf3144f6580754f3a7.jpg" alt="James Wilson" class="w-16 h-16 rounded-full object-cover mr-4">
+            <img src="https://readdy.ai/api/search-image?query=portrait of a middle-aged male farmer with weathered face, wearing a cap, natural lighting, professional headshot, neutral background&width=100&height=100&seq=3&orientation=squarish&flag=6bb915381ec94daf3144f6580754f3a7" alt="James Wilson" class="w-16 h-16 rounded-full object-cover mr-4">
             <div>
               <h4 class="text-lg font-semibold text-gray-900">James Wilson</h4>
               <p class="text-gray-600">Wheat Farmer, Nebraska</p>
@@ -280,7 +285,7 @@ body {
         <!-- Testimonial 2 -->
         <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
           <div class="flex items-center mb-6">
-            <img src="https://public.readdy.ai/ai/img_res/275089901e72a63ad8f7816fd08c3f17.jpg" alt="Sarah Johnson" class="w-16 h-16 rounded-full object-cover mr-4">
+            <img src="https://readdy.ai/api/search-image?query=portrait of a female farmer in her 40s, smiling, wearing casual farm attire, natural lighting, professional headshot, neutral background&width=100&height=100&seq=4&orientation=squarish&flag=275089901e72a63ad8f7816fd08c3f17" alt="Sarah Johnson" class="w-16 h-16 rounded-full object-cover mr-4">
             <div>
               <h4 class="text-lg font-semibold text-gray-900">Sarah Johnson</h4>
               <p class="text-gray-600">Organic Vegetable Farm, California</p>
@@ -299,7 +304,7 @@ body {
         <!-- Testimonial 3 -->
         <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
           <div class="flex items-center mb-6">
-            <img src="https://public.readdy.ai/ai/img_res/b7312aeab6878e708d3856846f1525c3.jpg" alt="Robert Chen" class="w-16 h-16 rounded-full object-cover mr-4">
+            <img src="https://readdy.ai/api/search-image?query=portrait of an older male farmer in his 60s with gray beard, wearing overalls, natural lighting, professional headshot, neutral background&width=100&height=100&seq=5&orientation=squarish&flag=b7312aeab6878e708d3856846f1525c3" alt="Robert Chen" class="w-16 h-16 rounded-full object-cover mr-4">
             <div>
               <h4 class="text-lg font-semibold text-gray-900">Robert Chen</h4>
               <p class="text-gray-600">Rice Farmer, Arkansas</p>
@@ -323,7 +328,7 @@ body {
       <h2 class="text-3xl font-bold text-white mb-6">Ready to Transform Your Farming Operation?</h2>
       <p class="text-xl text-white/90 mb-8 max-w-3xl mx-auto">Join thousands of farmers who are using data-driven insights to increase yields, reduce costs, and farm more sustainably.</p>
       <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-        <a href="#" class="bg-white hover:bg-gray-50 text-primary py-3 px-8 !rounded-button font-medium whitespace-nowrap transition duration-200 text-center">Start Free Trial</a>
+        <a href="{% url 'signup' %}" class="bg-white hover:bg-gray-50 text-primary py-3 px-8 !rounded-button font-medium whitespace-nowrap transition duration-200 text-center">Start Free Trial</a>
         <a href="#" class="bg-transparent hover:bg-white/10 text-white py-3 px-8 !rounded-button font-medium whitespace-nowrap transition duration-200 border border-white text-center">Schedule Demo</a>
       </div>
     </div>
@@ -378,15 +383,15 @@ body {
           <ul class="space-y-2">
             <li class="flex items-center">
               <i class="ri-map-pin-line mr-2"></i>
-              <span class="text-gray-400">123 Farm Road, Agritech Valley, CA 94123</span>
+              <span class="text-gray-400">26 sector,Moholi</span>
             </li>
             <li class="flex items-center">
               <i class="ri-mail-line mr-2"></i>
-              <a href="mailto:info@farmingdashboard.com" class="text-gray-400 hover:text-white">info@farmingdashboard.com</a>
+              <a href="mailto:singlanitin827@gmail.com" class="text-gray-400 hover:text-white">info@farmingdashboard.com</a>
             </li>
             <li class="flex items-center">
               <i class="ri-phone-line mr-2"></i>
-              <a href="tel:+18005551234" class="text-gray-400 hover:text-white">+1 (800) 555-1234</a>
+              <a href="tel:" class="text-gray-400 hover:text-white">91 85625-XXXXX</a>
             </li>
           </ul>
         </div>

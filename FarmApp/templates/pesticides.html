@@ -259,8 +259,14 @@ box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
 <div class="md:hidden w-8 h-8 flex items-center justify-center">
 <i class="ri-menu-line ri-lg"></i>
 </div>
-<div class="hidden md:flex items-center space-x-4">
-<a href="#" class="bg-primary text-white px-5 py-2 !rounded-button font-medium hover:bg-opacity-90 transition-all duration-300 whitespace-nowrap animate-fade-in animate-delay-4 custom-button">Get Started</a>
+<div class="flex items-center space-x-4">
+    {% if user.is_authenticated %}
+      <span class="text-gray-700 font-medium">Hello, {{ user.username }}</span>
+      <a href="{% url 'logout' %}" class="text-gray-700 hover:text-primary font-medium">Logout</a>
+    {% else %}
+      <a href="{% url 'login' %}" class="text-gray-700 hover:text-primary font-medium">Login</a>
+      <a href="{% url 'signup' %}" class="bg-primary hover:bg-primary/90 text-white py-2 px-6 !rounded-button font-medium whitespace-nowrap transition duration-200">Get Started</a>
+    {% endif %}
 </div>
 </div>
 </header>
@@ -1020,7 +1026,7 @@ Environmental Care
 </div>
 <div>
 <h4 class="font-medium text-gray-900 mb-1">Address</h4>
-<p class="text-gray-700">123 Agricultural Way<br>Farmington, CA 95023<br>United States</p>
+<p class="text-gray-700">26 sector,Moholi<br>India </p>
 </div>
 </div>
 <div class="flex items-start">
@@ -1029,7 +1035,7 @@ Environmental Care
 </div>
 <div>
 <h4 class="font-medium text-gray-900 mb-1">Phone</h4>
-<p class="text-gray-700">+1 (555) 123-4567</p>
+<p class="text-gray-700">91 85625-XXXXX</p>
 <p class="text-gray-600 text-sm">Monday-Friday, 8am-5pm PT</p>
 </div>
 </div>
@@ -1115,8 +1121,8 @@ Environmental Care
 <div>
 <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
 <ul class="space-y-2">
-<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Home</a></li>
-<li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">About Us</a></li>
+<li><a href="{% url 'home' %}" class="text-gray-400 hover:text-white transition-colors duration-300">Home</a></li>
+<li><a href="{% url 'about' %}" class="text-gray-400 hover:text-white transition-colors duration-300">About Us</a></li>
 <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Products</a></li>
 <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Services</a></li>
 <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Blog</a></li>
@@ -1143,13 +1149,13 @@ Environmental Care
 <div class="w-5 h-5 flex items-center justify-center mr-3 mt-1">
 <i class="ri-map-pin-line"></i>
 </div>
-<span class="text-gray-400">123 Agricultural Way<br>Farmington, CA 95023</span>
+<span class="text-gray-400">26 sector,Moholi</span>
 </li>
 <li class="flex items-start">
 <div class="w-5 h-5 flex items-center justify-center mr-3 mt-1">
 <i class="ri-phone-line"></i>
 </div>
-<span class="text-gray-400">+1 (555) 123-4567</span>
+<span class="text-gray-400">91 85625-XXXXX</span>
 </li>
 <li class="flex items-start">
 <div class="w-5 h-5 flex items-center justify-center mr-3 mt-1">
