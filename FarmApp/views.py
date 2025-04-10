@@ -10,6 +10,14 @@ from django.core.exceptions import ValidationError
 def home_view(request):
     return render(request,'home.html')
 
+
+def pesticides_view(request):
+    return render(request,'pesticides.html')
+
+def about_view(request):
+    return render(request, 'about.html')
+
+
 def signup_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
