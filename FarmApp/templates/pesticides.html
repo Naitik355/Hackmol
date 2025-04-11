@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/bot.css' %}">
 <style>
 :where([class^="ri-"])::before { content: "\f3c2"; }
 body {
@@ -251,9 +253,9 @@ box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
 <a href="#" class="text-3xl font-['Pacifico'] text-primary animate-fade-in">Agrova</a>
 <nav class="hidden md:flex space-x-8">
 <a href="{% url 'home' %}" class="text-gray-800 hover:text-primary transition-colors duration-300 font-medium animate-fade-in animate-delay-1">Home</a>
-<a href="#" class="text-primary border-b-2 border-primary font-medium animate-fade-in animate-delay-2">About Pesticides</a>
-<a href="#" class="text-gray-800 hover:text-primary transition-colors duration-300 font-medium animate-fade-in animate-delay-3">Products</a>
-<a href="#" class="text-gray-800 hover:text-primary transition-colors duration-300 font-medium animate-fade-in animate-delay-4">Contact</a>
+<a href="{% url 'pesticides' %}" class="text-primary border-b-2 border-primary font-medium animate-fade-in animate-delay-2">About Pesticides</a>
+<a href="{% url 'products' %}" class="text-gray-800 hover:text-primary transition-colors duration-300 font-medium animate-fade-in animate-delay-3">Products</a>
+<a href="#contact" class="text-gray-800 hover:text-primary transition-colors duration-300 font-medium animate-fade-in animate-delay-4">Contact</a>
 </nav>
 <div class="md:hidden w-8 h-8 flex items-center justify-center">
 <i class="ri-menu-line ri-lg"></i>
@@ -1092,6 +1094,20 @@ Environmental Care
 </div>
 </div>
 </section>
+
+<div id="chatbot-container">
+  <div id="chat-box" class="chat-box"></div>
+  <div class="chat-input">
+      <input type="text" id="user-input" placeholder="Ask me anything..." onkeypress="handleKeyPress(event)">
+      <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<div id="chat-toggle" onclick="toggleChat()">💬</div>
+
+
+
+
 <!-- Footer -->
 <footer class="bg-gray-900 text-white py-12">
 <div class="container mx-auto px-4">
@@ -1397,5 +1413,6 @@ document.body.style.overflow = '';
 }
 });
 </script>
+<script src="{% static 'js/bot.js' %}"></script>
 </body>
 </html>

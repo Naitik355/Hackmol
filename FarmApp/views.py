@@ -23,6 +23,9 @@ def about_view(request):
 def pesticides_view(request):
     return render(request,'pesticides.html')
 
+def products_view(request):
+    return render(request,'products.html')
+
 def profile_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')

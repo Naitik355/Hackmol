@@ -1,7 +1,9 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Farm Dashboard</title>
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
     <script>
@@ -36,6 +38,8 @@
       rel="stylesheet"
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/bot.css' %}">
+
   </head>
   <style>
     body {
@@ -300,6 +304,17 @@
         }
     </script>
     {% endif %}
+    <div id="chatbot-container">
+      <div id="chat-box" class="chat-box"></div>
+      <div class="chat-input">
+          <input type="text" id="user-input" placeholder="Ask me anything..." onkeypress="handleKeyPress(event)">
+          <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+    
+    <div id="chat-toggle" onclick="toggleChat()">💬</div>
+    
+  
 
     <footer class="bg-gray-900 text-white py-12">
       <div class="container mx-auto px-4">
@@ -427,5 +442,6 @@
         </div>
       </div>
     </footer>
+    <script src="{% static 'js/bot.js' %}"></script>
   </body>
-</html>
+</html>+
