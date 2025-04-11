@@ -45,7 +45,7 @@ Farm Dashboard is a Django-based web application designed to help farmers and ag
 
 1. **Clone the repository**
    ```bash
-   git clone [repository-url]
+   git clone https://github.com/Naitik355/Hackmol
    cd FarmDashboard
    ```
 
