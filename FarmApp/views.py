@@ -56,3 +56,7 @@ def login_view(request):
         else:
             messages.error(request, 'Invalid username or password')
     return render(request, 'login.html')
+
+
+def profile_view(request):
+    return render(request, 'profile.html')

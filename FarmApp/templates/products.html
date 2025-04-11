@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Pesticides - Product Catalog</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#15B8A6',secondary:'#16a34a'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        .custom-checkbox {
+            position: relative;
+            cursor: pointer;
+            padding-left: 28px;
+            display: block;
+            margin-bottom: 12px;
+        }
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 18px;
+            width: 18px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .custom-checkbox:hover input ~ .checkmark {
+            border-color: #ccc;
+        }
+        .custom-checkbox input:checked ~ .checkmark {
+            background-color: #2563eb;
+            border-color: #2563eb;
+        }
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        .custom-checkbox input:checked ~ .checkmark:after {
+            display: block;
+        }
+        .custom-checkbox .checkmark:after {
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        .price-range {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 5px;
+            background: #e5e7eb;
+            outline: none;
+        }
+        .price-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #2563eb;
+            cursor: pointer;
+        }
+        .price-range::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #2563eb;
+            cursor: pointer;
+        }
+        .rating input {
+            display: none;
+        }
+        .rating label {
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            margin: 0 2px;
+            position: relative;
+            display: inline-block;
+        }
+        .rating label:before {
+            content: "\ea77";
+            font-family: remixicon;
+            position: absolute;
+            color: #ddd;
+        }
+        .rating input:checked ~ label:before,
+        .rating:not(:checked) label:hover:before,
+        .rating:not(:checked) label:hover ~ label:before {
+            content: "\ea77";
+            color: #ffb800;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center">
+                <h1 class="text-2xl font-['Pacifico'] text-primary mr-8">logo</h1>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#" class="font-medium text-primary">Products</a>
+                    <a href="#" class="font-medium hover:text-primary transition-colors">Solutions</a>
+                    <a href="#" class="font-medium hover:text-primary transition-colors">Resources</a>
+                    <a href="#" class="font-medium hover:text-primary transition-colors">About Us</a>
+                </nav>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <input type="text" placeholder="Search products..." class="w-64 pl-10 pr-4 py-2 rounded border border-gray-200 focus:border-primary focus:outline-none text-sm">
+                    <div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-400">
+                        <i class="ri-search-line"></i>
+                    </div>
+                </div>
+                
+                <div class="relative w-10 h-10 flex items-center justify-center cursor-pointer">
+                    <i class="ri-shopping-cart-2-line text-xl"></i>
+                    <span class="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                </div>
+                
+                <button class="bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap hover:bg-blue-600 transition-colors">
+                    Sign In
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Breadcrumbs -->
+        <div class="text-sm text-gray-500 mb-6">
+            <a href="#" class="hover:text-primary">Home</a> &gt; 
+            <a href="#" class="hover:text-primary">Products</a> &gt; 
+            <span class="text-gray-700">Crop Pesticides</span>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-8">
+            <!-- Filters Sidebar -->
+            <div class="w-full md:w-1/4 bg-white p-6 rounded-lg shadow-sm h-fit">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-lg font-semibold">Filters</h2>
+                    <button class="text-primary text-sm hover:underline">Clear All</button>
+                </div>
+
+                <!-- Categories -->
+                <div class="mb-6">
+                    <h3 class="font-medium mb-3">Categories</h3>
+                    <div class="space-y-2">
+                        <label class="custom-checkbox">
+                            Insecticides
+                            <input type="checkbox" checked>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="custom-checkbox">
+                            Herbicides
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="custom-checkbox">
+                            Fungicides
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="custom-checkbox">
+                            Nematicides
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="custom-checkbox">
+                            Rodenticides
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Price Range -->
+                <div class="mb-6">
+                    <h3 class="font-medium mb-3">Price Range</h3>
+                    <input type="range" min="0" max="500" value="250" class="price-range mb-2">
+                    <div class="flex justify-between text-sm text-gray-500">
+                        <span>$0</span>
+                        <span>$250</span>
+                        <span>$500</span>
+                    </div>
+                </div>
+
+                <!-- Brands -->
+                <div class="mb-6">
+                    <h3 class="font-medium mb-3">Brands</h3>
+                    <div class="space-y-2">
+                        <label class="custom-checkbox">
+                            Syngenta
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="custom-checkbox">
+                            Bayer
+                            <input type="checkbox" checked>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="custom-checkbox">
+                            BASF
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="custom-checkbox">
+                            Corteva
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="custom-checkbox">
+                            FMC
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Crop Type -->
+                <div class="mb-6">
+                    <h3 class="font-medium mb-3">Crop Type</h3>
+                    <div class="space-y-2">
+                        <label class="custom-checkbox">
+                            Corn
+                            <input type="checkbox" checked>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="custom-checkbox">
+                            Wheat
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="custom-checkbox">
+                            Soybeans
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="custom-checkbox">
+                            Cotton
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="custom-checkbox">
+                            Vegetables
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Rating -->
+                <div>
+                    <h3 class="font-medium mb-3">Rating</h3>
+                    <div class="rating">
+                        <input type="radio" id="star5" name="rating" value="5">
+                        <label for="star5"></label>
+                        <input type="radio" id="star4" name="rating" value="4">
+                        <label for="star4"></label>
+                        <input type="radio" id="star3" name="rating" value="3" checked>
+                        <label for="star3"></label>
+                        <input type="radio" id="star2" name="rating" value="2">
+                        <label for="star2"></label>
+                        <input type="radio" id="star1" name="rating" value="1">
+                        <label for="star1"></label>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-1">3 stars & above</p>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="w-full md:w-3/4">
+                <!-- Sort and View Options -->
+                <div class="bg-white p-4 rounded-lg shadow-sm mb-6 flex flex-wrap justify-between items-center">
+                    <div class="flex items-center space-x-2">
+                        <span class="text-gray-600">Sort by:</span>
+                        <div class="relative">
+                            <button class="bg-white border border-gray-200 rounded px-4 py-2 !rounded-button whitespace-nowrap text-sm flex items-center">
+                                <span>Popularity</span>
+                                <div class="w-4 h-4 flex items-center justify-center ml-2">
+                                    <i class="ri-arrow-down-s-line"></i>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4 mt-2 sm:mt-0">
+                        <span class="text-gray-600">View:</span>
+                        <div class="flex space-x-2">
+                            <button class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded">
+                                <i class="ri-layout-grid-line"></i>
+                            </button>
+                            <button class="w-8 h-8 flex items-center justify-center bg-gray-100 text-gray-600 rounded hover:bg-gray-200">
+                                <i class="ri-list-check-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Product 1 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden transition-transform hover:shadow-md hover:-translate-y-1">
+                        <div class="relative">
+                            <img src="https://readdy.ai/api/search-image?query=professional%20product%20photography%20of%20a%20pesticide%20bottle%20with%20clean%20white%20background%2C%20high%20quality%20commercial%20product%20shot%2C%20minimalist%20style%2C%20clear%20bottle%20with%20blue%20liquid&width=400&height=300&seq=1&orientation=landscape" alt="MaxGuard Pro" class="w-full h-48 object-cover object-top">
+                            <div class="absolute top-2 left-2 bg-primary text-white text-xs px-2 py-1 rounded">New</div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center mb-1">
+                                <div class="flex text-yellow-400">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-half-line"></i>
+                                </div>
+                                <span class="text-xs text-gray-500 ml-1">(128)</span>
+                            </div>
+                            <h3 class="font-bold text-lg mb-1">MaxGuard Pro</h3>
+                            <p class="text-sm text-gray-600 mb-3">Advanced broad-spectrum insecticide for corn and soybeans. Controls over 40 pest species.</p>
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <span class="text-lg font-bold">$89.99</span>
+                                    <span class="text-xs text-gray-500 ml-1">/ liter</span>
+                                </div>
+                                <div class="text-xs px-2 py-1 bg-green-100 text-green-700 rounded">In Stock</div>
+                            </div>
+                            <button class="w-full mt-3 bg-primary text-white py-2 !rounded-button whitespace-nowrap hover:bg-blue-600 transition-colors flex items-center justify-center">
+                                <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                    <i class="ri-shopping-cart-line"></i>
+                                </div>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden transition-transform hover:shadow-md hover:-translate-y-1">
+                        <div class="relative">
+                            <img src="https://readdy.ai/api/search-image?query=professional%20product%20photography%20of%20a%20pesticide%20bottle%20with%20clean%20white%20background%2C%20high%20quality%20commercial%20product%20shot%2C%20minimalist%20style%2C%20clear%20bottle%20with%20green%20liquid&width=400&height=300&seq=2&orientation=landscape" alt="HerbClear Ultra" class="w-full h-48 object-cover object-top">
+                            <div class="absolute top-2 left-2 bg-orange-500 text-white text-xs px-2 py-1 rounded">Best Seller</div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center mb-1">
+                                <div class="flex text-yellow-400">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-line"></i>
+                                </div>
+                                <span class="text-xs text-gray-500 ml-1">(94)</span>
+                            </div>
+                            <h3 class="font-bold text-lg mb-1">HerbClear Ultra</h3>
+                            <p class="text-sm text-gray-600 mb-3">Premium selective herbicide with extended residual activity. Ideal for wheat and barley crops.</p>
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <span class="text-lg font-bold">$76.50</span>
+                                    <span class="text-xs text-gray-500 ml-1">/ liter</span>
+                                </div>
+                                <div class="text-xs px-2 py-1 bg-green-100 text-green-700 rounded">In Stock</div>
+                            </div>
+                            <button class="w-full mt-3 bg-primary text-white py-2 !rounded-button whitespace-nowrap hover:bg-blue-600 transition-colors flex items-center justify-center">
+                                <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                    <i class="ri-shopping-cart-line"></i>
+                                </div>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden transition-transform hover:shadow-md hover:-translate-y-1">
+                        <div class="relative">
+                            <img src="https://readdy.ai/api/search-image?query=professional%20product%20photography%20of%20a%20pesticide%20bottle%20with%20clean%20white%20background%2C%20high%20quality%20commercial%20product%20shot%2C%20minimalist%20style%2C%20clear%20bottle%20with%20yellow%20liquid&width=400&height=300&seq=3&orientation=landscape" alt="FungiShield Plus" class="w-full h-48 object-cover object-top">
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center mb-1">
+                                <div class="flex text-yellow-400">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                </div>
+                                <span class="text-xs text-gray-500 ml-1">(207)</span>
+                            </div>
+                            <h3 class="font-bold text-lg mb-1">FungiShield Plus</h3>
+                            <p class="text-sm text-gray-600 mb-3">Systemic fungicide with preventative and curative action. Protects against major crop diseases.</p>
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <span class="text-lg font-bold">$94.25</span>
+                                    <span class="text-xs text-gray-500 ml-1">/ liter</span>
+                                </div>
+                                <div class="text-xs px-2 py-1 bg-green-100 text-green-700 rounded">In Stock</div>
+                            </div>
+                            <button class="w-full mt-3 bg-primary text-white py-2 !rounded-button whitespace-nowrap hover:bg-blue-600 transition-colors flex items-center justify-center">
+                                <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                    <i class="ri-shopping-cart-line"></i>
+                                </div>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden transition-transform hover:shadow-md hover:-translate-y-1">
+                        <div class="relative">
+                            <img src="https://readdy.ai/api/search-image?query=professional%20product%20photography%20of%20a%20pesticide%20bottle%20with%20clean%20white%20background%2C%20high%20quality%20commercial%20product%20shot%2C%20minimalist%20style%2C%20clear%20bottle%20with%20red%20liquid&width=400&height=300&seq=4&orientation=landscape" alt="RootGuard Nematicide" class="w-full h-48 object-cover object-top">
+                            <div class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">Sale</div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center mb-1">
+                                <div class="flex text-yellow-400">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-line"></i>
+                                    <i class="ri-star-line"></i>
+                                </div>
+                                <span class="text-xs text-gray-500 ml-1">(42)</span>
+                            </div>
+                            <h3 class="font-bold text-lg mb-1">RootGuard Nematicide</h3>
+                            <p class="text-sm text-gray-600 mb-3">Specialized nematode control solution for vegetable crops. Protects root systems and improves yield.</p>
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <span class="text-lg font-bold">$68.75</span>
+                                    <span class="text-xs text-gray-500 ml-1">/ liter</span>
+                                    <span class="text-xs line-through text-gray-400 ml-1">$82.99</span>
+                                </div>
+                                <div class="text-xs px-2 py-1 bg-green-100 text-green-700 rounded">In Stock</div>
+                            </div>
+                            <button class="w-full mt-3 bg-primary text-white py-2 !rounded-button whitespace-nowrap hover:bg-blue-600 transition-colors flex items-center justify-center">
+                                <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                    <i class="ri-shopping-cart-line"></i>
+                                </div>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product 5 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden transition-transform hover:shadow-md hover:-translate-y-1">
+                        <div class="relative">
+                            <img src="https://readdy.ai/api/search-image?query=professional%20product%20photography%20of%20a%20pesticide%20bottle%20with%20clean%20white%20background%2C%20high%20quality%20commercial%20product%20shot%2C%20minimalist%20style%2C%20clear%20bottle%20with%20purple%20liquid&width=400&height=300&seq=5&orientation=landscape" alt="RodentStop Pro" class="w-full h-48 object-cover object-top">
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center mb-1">
+                                <div class="flex text-yellow-400">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-half-line"></i>
+                                </div>
+                                <span class="text-xs text-gray-500 ml-1">(86)</span>
+                            </div>
+                            <h3 class="font-bold text-lg mb-1">RodentStop Pro</h3>
+                            <p class="text-sm text-gray-600 mb-3">Professional-grade rodenticide with weather-resistant bait technology. Safe for use around storage facilities.</p>
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <span class="text-lg font-bold">$54.99</span>
+                                    <span class="text-xs text-gray-500 ml-1">/ kg</span>
+                                </div>
+                                <div class="text-xs px-2 py-1 bg-green-100 text-green-700 rounded">In Stock</div>
+                            </div>
+                            <button class="w-full mt-3 bg-primary text-white py-2 !rounded-button whitespace-nowrap hover:bg-blue-600 transition-colors flex items-center justify-center">
+                                <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                    <i class="ri-shopping-cart-line"></i>
+                                </div>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product 6 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden transition-transform hover:shadow-md hover:-translate-y-1">
+                        <div class="relative">
+                            <img src="https://readdy.ai/api/search-image?query=professional%20product%20photography%20of%20a%20pesticide%20bottle%20with%20clean%20white%20background%2C%20high%20quality%20commercial%20product%20shot%2C%20minimalist%20style%2C%20clear%20bottle%20with%20orange%20liquid&width=400&height=300&seq=6&orientation=landscape" alt="CropDefend Complete" class="w-full h-48 object-cover object-top">
+                            <div class="absolute top-2 left-2 bg-blue-500 text-white text-xs px-2 py-1 rounded">Organic</div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center mb-1">
+                                <div class="flex text-yellow-400">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-line"></i>
+                                </div>
+                                <span class="text-xs text-gray-500 ml-1">(153)</span>
+                            </div>
+                            <h3 class="font-bold text-lg mb-1">CropDefend Complete</h3>
+                            <p class="text-sm text-gray-600 mb-3">Organic-certified multi-purpose pesticide. Effective against insects, fungi, and mites in one formula.</p>
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <span class="text-lg font-bold">$112.50</span>
+                                    <span class="text-xs text-gray-500 ml-1">/ liter</span>
+                                </div>
+                                <div class="text-xs px-2 py-1 bg-yellow-100 text-yellow-700 rounded">Low Stock</div>
+                            </div>
+                            <button class="w-full mt-3 bg-primary text-white py-2 !rounded-button whitespace-nowrap hover:bg-blue-600 transition-colors flex items-center justify-center">
+                                <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                    <i class="ri-shopping-cart-line"></i>
+                                </div>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product 7 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden transition-transform hover:shadow-md hover:-translate-y-1">
+                        <div class="relative">
+                            <img src="https://readdy.ai/api/search-image?query=professional%20product%20photography%20of%20a%20pesticide%20bottle%20with%20clean%20white%20background%2C%20high%20quality%20commercial%20product%20shot%2C%20minimalist%20style%2C%20clear%20bottle%20with%20brown%20liquid&width=400&height=300&seq=7&orientation=landscape" alt="SoilGuard Advanced" class="w-full h-48 object-cover object-top">
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center mb-1">
+                                <div class="flex text-yellow-400">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-half-line"></i>
+                                    <i class="ri-star-line"></i>
+                                </div>
+                                <span class="text-xs text-gray-500 ml-1">(67)</span>
+                            </div>
+                            <h3 class="font-bold text-lg mb-1">SoilGuard Advanced</h3>
+                            <p class="text-sm text-gray-600 mb-3">Soil-applied insecticide with extended protection period. Ideal for corn, cotton, and potato crops.</p>
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <span class="text-lg font-bold">$79.99</span>
+                                    <span class="text-xs text-gray-500 ml-1">/ liter</span>
+                                </div>
+                                <div class="text-xs px-2 py-1 bg-green-100 text-green-700 rounded">In Stock</div>
+                            </div>
+                            <button class="w-full mt-3 bg-primary text-white py-2 !rounded-button whitespace-nowrap hover:bg-blue-600 transition-colors flex items-center justify-center">
+                                <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                    <i class="ri-shopping-cart-line"></i>
+                                </div>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product 8 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden transition-transform hover:shadow-md hover:-translate-y-1">
+                        <div class="relative">
+                            <img src="https://readdy.ai/api/search-image?query=professional%20product%20photography%20of%20a%20pesticide%20bottle%20with%20clean%20white%20background%2C%20high%20quality%20commercial%20product%20shot%2C%20minimalist%20style%2C%20clear%20bottle%20with%20teal%20liquid&width=400&height=300&seq=8&orientation=landscape" alt="WeedMaster Elite" class="w-full h-48 object-cover object-top">
+                            <div class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">Sale</div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center mb-1">
+                                <div class="flex text-yellow-400">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-line"></i>
+                                </div>
+                                <span class="text-xs text-gray-500 ml-1">(118)</span>
+                            </div>
+                            <h3 class="font-bold text-lg mb-1">WeedMaster Elite</h3>
+                            <p class="text-sm text-gray-600 mb-3">Broad-spectrum herbicide with rapid action. Controls over 60 weed species in various crops.</p>
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <span class="text-lg font-bold">$62.25</span>
+                                    <span class="text-xs text-gray-500 ml-1">/ liter</span>
+                                    <span class="text-xs line-through text-gray-400 ml-1">$74.99</span>
+                                </div>
+                                <div class="text-xs px-2 py-1 bg-green-100 text-green-700 rounded">In Stock</div>
+                            </div>
+                            <button class="w-full mt-3 bg-primary text-white py-2 !rounded-button whitespace-nowrap hover:bg-blue-600 transition-colors flex items-center justify-center">
+                                <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                    <i class="ri-shopping-cart-line"></i>
+                                </div>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product 9 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden transition-transform hover:shadow-md hover:-translate-y-1">
+                        <div class="relative">
+                            <img src="https://readdy.ai/api/search-image?query=professional%20product%20photography%20of%20a%20pesticide%20bottle%20with%20clean%20white%20background%2C%20high%20quality%20commercial%20product%20shot%2C%20minimalist%20style%2C%20clear%20bottle%20with%20pink%20liquid&width=400&height=300&seq=9&orientation=landscape" alt="BioDefense Natural" class="w-full h-48 object-cover object-top">
+                            <div class="absolute top-2 left-2 bg-blue-500 text-white text-xs px-2 py-1 rounded">Organic</div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center mb-1">
+                                <div class="flex text-yellow-400">
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-fill"></i>
+                                    <i class="ri-star-half-line"></i>
+                                </div>
+                                <span class="text-xs text-gray-500 ml-1">(92)</span>
+                            </div>
+                            <h3 class="font-bold text-lg mb-1">BioDefense Natural</h3>
+                            <p class="text-sm text-gray-600 mb-3">Plant-based organic pesticide suitable for all crops. Safe for beneficial insects and pollinators.</p>
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <span class="text-lg font-bold">$98.50</span>
+                                    <span class="text-xs text-gray-500 ml-1">/ liter</span>
+                                </div>
+                                <div class="text-xs px-2 py-1 bg-red-100 text-red-700 rounded">Out of Stock</div>
+                            </div>
+                            <button class="w-full mt-3 bg-gray-300 text-gray-600 py-2 !rounded-button whitespace-nowrap cursor-not-allowed flex items-center justify-center">
+                                <div class="w-4 h-4 flex items-center justify-center mr-1">
+                                    <i class="ri-notification-line"></i>
+                                </div>
+                                Notify Me
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="mt-8 flex justify-center">
+                    <nav class="flex items-center space-x-1">
+                        <a href="#" class="px-3 py-2 rounded border border-gray-300 text-gray-600 hover:bg-gray-50">
+                            <i class="ri-arrow-left-s-line"></i>
+                        </a>
+                        <a href="#" class="px-3 py-2 rounded bg-primary text-white">1</a>
+                        <a href="#" class="px-3 py-2 rounded border border-gray-300 text-gray-600 hover:bg-gray-50">2</a>
+                        <a href="#" class="px-3 py-2 rounded border border-gray-300 text-gray-600 hover:bg-gray-50">3</a>
+                        <span class="px-3 py-2 text-gray-600">...</span>
+                        <a href="#" class="px-3 py-2 rounded border border-gray-300 text-gray-600 hover:bg-gray-50">12</a>
+                        <a href="#" class="px-3 py-2 rounded border border-gray-300 text-gray-600 hover:bg-gray-50">
+                            <i class="ri-arrow-right-s-line"></i>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-6 right-6 bg-primary text-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center opacity-0 transition-opacity duration-300">
+        <i class="ri-arrow-up-line"></i>
+    </button>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-['Pacifico'] mb-4">logo</h3>
+                    <p class="text-gray-300 mb-4">Providing high-quality crop protection solutions since 1995. Committed to sustainable agriculture and environmental stewardship.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <div class="w-8 h-8 flex items-center justify-center">
+                                <i class="ri-facebook-fill"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <div class="w-8 h-8 flex items-center justify-center">
+                                <i class="ri-twitter-x-fill"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <div class="w-8 h-8 flex items-center justify-center">
+                                <i class="ri-instagram-fill"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <div class="w-8 h-8 flex items-center justify-center">
+                                <i class="ri-linkedin-fill"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white">Products</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Solutions</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Resources</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">About Us</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center mt-0.5 mr-2 text-gray-400">
+                                <i class="ri-map-pin-line"></i>
+                            </div>
+                            <span class="text-gray-300">123 Agri Lane, Farmington, CA 94538, USA</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center mr-2 text-gray-400">
+                                <i class="ri-phone-line"></i>
+                            </div>
+                            <span class="text-gray-300">+1 (800) 123-4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center mr-2 text-gray-400">
+                                <i class="ri-mail-line"></i>
+                            </div>
+                            <span class="text-gray-300">info@cropprotect.com</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
+                    <p class="text-gray-300 mb-4">Subscribe to our newsletter for the latest product updates and agricultural tips.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email address" class="px-4 py-2 w-full rounded-l border-none text-gray-800 focus:outline-none text-sm">
+                        <button class="bg-primary text-white px-4 py-2 rounded-r !rounded-button whitespace-nowrap hover:bg-blue-600 transition-colors">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="border-gray-700 my-8">
+            
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">&copy; 2025 CropProtect Inc. All rights reserved.</p>
+                
+                <div class="flex flex-wrap justify-center space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Safety Information</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Regulatory Compliance</a>
+                </div>
+                
+                <div class="flex space-x-3 mt-4 md:mt-0">
+                    <div class="w-8 h-5 flex items-center justify-center text-gray-300">
+                        <i class="ri-visa-fill text-xl"></i>
+                    </div>
+                    <div class="w-8 h-5 flex items-center justify-center text-gray-300">
+                        <i class="ri-mastercard-fill text-xl"></i>
+                    </div>
+                    <div class="w-8 h-5 flex items-center justify-center text-gray-300">
+                        <i class="ri-paypal-fill text-xl"></i>
+                    </div>
+                    <div class="w-8 h-5 flex items-center justify-center text-gray-300">
+                        <i class="ri-amazon-pay-fill text-xl"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-6 text-center">
+                <p class="text-gray-400 text-xs">SAFETY DISCLAIMER: Always read and follow label directions. Improper use of pesticides can be harmful to humans, animals, and the environment. Consult with a certified crop advisor before application.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.remove('opacity-0');
+                backToTopButton.classList.add('opacity-100');
+            } else {
+                backToTopButton.classList.remove('opacity-100');
+                backToTopButton.classList.add('opacity-0');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
