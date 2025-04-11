@@ -17,12 +17,11 @@ import joblib
 def home_view(request):
     return render(request,'home.html')
 
+def about_view(request):
+    return render(request,'about.html')
 
 def pesticides_view(request):
     return render(request,'pesticides.html')
-
-def about_view(request):
-    return render(request, 'about.html')
 
 def profile_view(request):
     return render(request, 'profile.html')
@@ -83,7 +82,7 @@ def logout_view(request):
 def dashboard_view(request):
     # Fetch weather data from an API
     city="Jalandhar"
-    weatherstack_api_key = "27631a69e40d2738bf2c838450a37ae8"
+    weatherstack_api_key = "82a694a694ec993d6c20080dff911346"
     weatherstack_url = f"http://api.weatherstack.com/current?access_key={weatherstack_api_key}&query={city}"
 
     try:
