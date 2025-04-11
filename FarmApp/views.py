@@ -24,6 +24,24 @@ def pesticides_view(request):
     return render(request,'pesticides.html')
 
 def profile_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        city = request.POST.get('city')
+        state = request.POST.get('state')
+
+        user = User.objects.get(username=request.user.username)
+        user.username = username
+        user.email = email
+        user.phone = phone
+        user.city = city
+        user.state = state
+        user.save()
+        
+        messages.success(request, 'Profile updated successfully!')
+        return redirect('dashboard')
+    
     return render(request, 'profile.html')
 
 def signup_view(request):

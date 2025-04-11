@@ -116,70 +116,27 @@
           </div>
         </div>
 
-        <!-- Gender & DOB -->
+
+        <!-- City & State -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="space-y-2">
-            <label for="gender" class="block text-sm font-medium text-gray-700">Gender</label>
+            <label for="city" class="block text-sm font-medium text-gray-700">City</label>
             <div class="relative">
-              <i class="fas fa-venus-mars absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-              <select id="gender" name="gender"
-                class="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/50 transition-all duration-300 bg-white/70 backdrop-blur-md hover:shadow appearance-none">
-                <option value="">Select Gender</option>
-                <option value="male" {% if user.gender == 'male' %}selected{% endif %}>Male</option>
-                <option value="female" {% if user.gender == 'female' %}selected{% endif %}>Female</option>
-                <option value="other" {% if user.gender == 'other' %}selected{% endif %}>Other</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="space-y-2">
-            <label for="dob" class="block text-sm font-medium text-gray-700">Date of Birth</label>
-            <div class="relative">
-              <i class="fas fa-calendar absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-              <input type="date" id="dob" name="dob" value="{{ user.dob }}"
+              <i class="fas fa-city absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+              <input type="text" id="city" name="city" value="{{ user.city }}"
+                placeholder="Enter your city"
                 class="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-all duration-300 bg-white/70 shadow-sm hover:shadow-md backdrop-blur-md" />
             </div>
           </div>
-        </div>
 
-        <!-- Address -->
-        <div class="space-y-2">
-          <label for="address" class="block text-sm font-medium text-gray-700">Address</label>
-          <div class="relative">
-            <i class="fas fa-map-marker-alt absolute left-4 top-4 text-gray-400"></i>
-            <textarea id="address" name="address" placeholder="Enter your address"
-              class="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-all duration-300 bg-white/70 shadow-sm hover:shadow-md backdrop-blur-md min-h-[100px] resize-y">{{ user.address }}</textarea>
-          </div>
-        </div>
-
-        <!-- Profile Picture -->
-        <div class="space-y-2">
-          <label for="profile-pic" class="block text-sm font-medium text-gray-700">Profile Picture</label>
-          <div class="relative">
-            <i class="fas fa-camera absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-            <input type="file" id="profile-pic" name="profile_picture" accept="image/*"
-              class="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-all duration-300 bg-transparent hover:shadow-md" />
-          </div>
-        </div>
-
-        <!-- Bio -->
-        <div class="space-y-2">
-          <label for="bio" class="block text-sm font-medium text-gray-700">Bio</label>
-          <div class="relative">
-            <i class="fas fa-pen absolute left-4 top-4 text-gray-400"></i>
-            <textarea id="bio" name="bio" placeholder="Tell something about yourself"
-              class="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-all duration-300 bg-white/70 shadow-sm hover:shadow-md backdrop-blur-md min-h-[100px] resize-y">{{ user.bio }}</textarea>
-          </div>
-        </div>
-
-        <!-- Social Media -->
-        <div class="space-y-2">
-          <label for="social" class="block text-sm font-medium text-gray-700">Social Media Link</label>
-          <div class="relative">
-            <i class="fas fa-link absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-            <input type="url" id="social" name="social" value="{{ user.social }}"
-              placeholder="Enter your social media link"
-              class="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-all duration-300 bg-white/70 shadow-sm hover:shadow-md backdrop-blur-md" />
+          <div class="space-y-2">
+            <label for="state" class="block text-sm font-medium text-gray-700">State</label>
+            <div class="relative">
+              <i class="fas fa-map-marker-alt absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+              <input type="text" id="state" name="state" value="{{ user.state }}"
+                placeholder="Enter your state"
+                class="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-all duration-300 bg-white/70 shadow-sm hover:shadow-md backdrop-blur-md" />
+            </div>
           </div>
         </div>
 
